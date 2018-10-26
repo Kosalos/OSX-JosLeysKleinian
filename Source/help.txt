@@ -1,0 +1,126 @@
+Jos Leys Strange Attractor
+
+The panel on the left holds two kinds of controls:
+buttons, and one or two dimensional widgets.
+
+Widgets:
+Mouse click on a widget to select it.
+It's legend will turn Green.
+You can also move the focus up/down with the '<' and '>' keys.
+Press the assigned Hotkey character to move the focus directly.
+
+Now on the image:
+Mouse drag to control the widget's parameters.
+You can also use the Arrow keys.
+Note: Hold down the <option> key to increase the alteration amount.
+Note: Hold down the <A> key to decrease the alteration amount.
+
+Note: certain widget rows manage a three part parameter (x,y and z).
+The first graph displays the x,y values, the second graph displays the z value.
+Hold down the <Shift> key to apply X axis movements to the Z value (second graph).
+
+Buttons:
+A button command is performed by Mouse clicking on the legend.
+
+Note: Press <1> to toggle display of the control panel.
+Note: Use can exit program by press the <esc> key.
+
+Q. "Res: High, Low"
+    Press this to toggle image resolution between Low and High.
+    Use Low resolution to quickly navigate to region of interest,
+    then switch to Hi for viewing.
+
+Z. "Zoom"
+    Changing the width of the field of view effects a zoom effect.
+
+2. "Max Steps"
+    How often the algorithm attempts to hone in on the object shape.
+
+    "FinalIter"
+    How many 'final iterations' the algorithm performs to finese the object.
+
+    "BoxIter"
+    Number of 'box iterations' the algorithm performs to finese the object.
+
+3. "ShowBalls"
+    Toggle whether the distance field spheres are displayed.
+
+    "FourGen"
+    Toggle whether the Z axis folds along with the X,Y axes.
+
+    "DoInversion"
+    Toggle whether the object folds itself according to inversion params.
+
+I. "InvCenter"
+    Specify the inversion center position when 'DoInversion' is enabled.
+
+   "InvRadius"
+    Set the inversion radius.
+
+4. "DeltaAngle"
+    Control amount of twisting within the object.
+    Trying to control how many 'dusty pixels' are displayed.
+
+X. "box_X"
+Y. "box_Y"
+    Specify folding positions.
+
+K. "KleinR"
+L. "KleinI"
+    Specify the Real and Imaginary Kleinian parameters.
+
+5. "Clamp_y"
+   "Clamp_DF"
+    During final iterations: push the iterated point left or right depending on the
+    sign of KleinI.
+
+E. "epsilon"
+    Controls how close the Distance Estimation algorithm needs to get.
+    Smaller values are more accurate, more 'dusty', and slower to determine.
+
+    "N epsilon"
+    Attempt to control 'dusty pixels'.
+    This value determines how far to the left/right/up/down the algorithm
+    looks when finding a neighboring hit point to calculate the Normal vector
+    to the current hit position.
+
+B. "Bright"
+   "Shiny"
+   Set the diffuse and specular lighting amounts.
+
+G. "Light"
+    Set the position of the single light source.
+
+C. "Color"
+    Colorize the object.
+
+Z. "Save/Load"
+    Launch the Save/Load dialog.
+
+7. "Reset"
+    Reset to sane default parameters.
+
+O. "Stereo"
+    Toggles stereo viewing
+    The image is rendered twice, for 'cross-eyed' 3D viewing.
+    With the iPad held two feet away, slightly cross your eyes so that there is a
+    third image in the middle.
+    Relax your gaze, and concentrate only on that middle image, which is in 3D.
+
+8.  "Parallax"
+    When stereo viewing is enabled, use this to set the stereo effect.
+    1. Objects you have decided should appear closer actually do.
+    2. How pronounced the stereo effect is.
+    Note: this will probalby have to be updated whenever you rotate the view.
+
+9. "Texture: On, Off"
+    You can select a photo from your library to texture the object.
+    Tap this option to specify the texture status.
+
+T.  With Texture enabled, these widgets control the center and scaling of the image.
+
+J. "Morph"
+    When toggled On, the paremeters you select automatically slide their
+    value(s) back and forth.
+    You select parameters by selecting them, then pressing the <return> key to
+    toggle morphing status.
