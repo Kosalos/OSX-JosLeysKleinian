@@ -50,6 +50,10 @@ float  JosKleinian(vec3 z,constant Control &control)
         z.x = -b - z.x; z.y = a + z.y;
         DF *= iR;//max(1.,iR);
         
+        if(control.dfClamp) {
+            DF = max(1.,iR);
+        }
+        
         //If the iterated points enters a 2-cycle , bail out.
         if(dot2(z-llz) < 1e-12) {
             break;

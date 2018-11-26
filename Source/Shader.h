@@ -66,4 +66,6 @@ typedef struct {
     vector_float2 txtSize;
     vector_float3 txtCenter;
     
+    bool dfClamp;
+    
 }  Control;

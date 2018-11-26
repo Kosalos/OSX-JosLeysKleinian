@@ -25,7 +25,7 @@ class Graphics {
     var stringFontSize:CGFloat = 16
     var stringColor:NSColor = .white
     var stringFont:NSFont!
-    var stringAtts:[NSAttributedStringKey : Any]!
+    var stringAtts:[NSAttributedString.Key : Any]!
 
     func setContext(_ c:NSGraphicsContext) { context = c.cgContext }
     
@@ -35,8 +35,8 @@ class Graphics {
         stringFont = NSFont.init(name: "Helvetica", size:CGFloat(stringFontSize))!
         
         stringAtts = [
-            NSAttributedStringKey.font:stringFont,
-            NSAttributedStringKey.foregroundColor: stringColor]
+            NSAttributedString.Key.font:stringFont,
+            NSAttributedString.Key.foregroundColor: stringColor]
     }
     
     func text(_ str:String, _ pt:CGPoint, _ size:CGFloat, _ color:NSColor) {
@@ -137,7 +137,7 @@ class Graphics {
 
 extension String {
     func drawSize(_ font: NSFont) -> CGSize {
-        return (self as NSString).size(withAttributes: [NSAttributedStringKey.font: font])
+        return (self as NSString).size(withAttributes: [NSAttributedString.Key.font: font])
     }
 }
 

@@ -156,7 +156,8 @@ class ViewController: NSViewController, NSWindowDelegate, WGDelegate {
         wg.addLine()
         wg.addSingleFloat("5",&control.Clamp_y, 0.001,2,0.01, "Clamp_y")
         wg.addSingleFloat("",&control.Clamp_DF, 0.001,2,0.03, "Clamp_DF")
-        
+        wg.addColoredCommand("",.dfClamp,"DF < 1")
+
         wg.addLine()
         wg.addSingleFloat("E",&control.epsilon, 0.000001, 0.01, 0.0001, "epsilon")
         wg.addSingleFloat("",&control.normalEpsilon, 0.000001, 0.04, 0.0002, "N epsilon")
@@ -201,9 +202,9 @@ class ViewController: NSViewController, NSWindowDelegate, WGDelegate {
     
     func wgCommand(_ cmd: WgIdent) {
         func presentPopover(_ name:String) {
-            let mvc = NSStoryboard(name: NSStoryboard.Name(rawValue: "Main"), bundle: nil)
-            let vc = mvc.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue:name)) as! NSViewController
-            self.presentViewController(vc, asPopoverRelativeTo: wg.bounds, of: wg, preferredEdge: .maxX, behavior: .transient)
+            let mvc = NSStoryboard(name: NSStoryboard.Name("Main"), bundle: nil)
+            let vc = mvc.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(name)) as! NSViewController
+            self.present(vc, asPopoverRelativeTo: wg.bounds, of: wg, preferredEdge: .maxX, behavior: .transient)
         }
         
         switch(cmd) {
@@ -212,6 +213,7 @@ class ViewController: NSViewController, NSWindowDelegate, WGDelegate {
         case .showBalls : control.showBalls = !control.showBalls; updateImage()
         case .doInversion : control.doInversion = !control.doInversion; updateImage()
         case .fourGen : control.fourGen = !control.fourGen; updateImage()
+        case .dfClamp : control.dfClamp = !control.dfClamp; updateImage()
         case .stereo :
             isStereo = !isStereo
             initializeWidgetGroup()
@@ -261,6 +263,7 @@ class ViewController: NSViewController, NSWindowDelegate, WGDelegate {
         case .showBalls : highlight = control.showBalls
         case .doInversion : highlight = control.doInversion
         case .fourGen : highlight = control.fourGen
+        case .dfClamp : highlight = control.dfClamp
         case .stereo : highlight = isStereo
         case .rotate : highlight = isRotate
         case .texture : highlight = control.txtOnOff > 0
@@ -301,6 +304,7 @@ class ViewController: NSViewController, NSWindowDelegate, WGDelegate {
         control.showBalls = true
         control.doInversion = true
         control.fourGen = false
+        control.dfClamp = false
         control.Clamp_y = 0.221299887
         control.Clamp_DF = 0.00999999977
         control.box_size_x = 0.6318979

@@ -74,6 +74,9 @@ L. "KleinI"
     During final iterations: push the iterated point left or right depending on the
     sign of KleinI.
 
+    "DF < 1"
+    Toggle function call in shader that limits DF calculation.
+
 E. "epsilon"
     Controls how close the Distance Estimation algorithm needs to get.
     Smaller values are more accurate, more 'dusty', and slower to determine.
