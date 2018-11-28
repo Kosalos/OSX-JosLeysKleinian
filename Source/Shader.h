@@ -67,5 +67,6 @@ typedef struct {
     vector_float3 txtCenter;
     
     bool dfClamp;
-    
+    vector_float3 distort;
+
 }  Control;

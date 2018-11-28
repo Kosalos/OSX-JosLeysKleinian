@@ -42,6 +42,9 @@ Z. "Zoom"
     "BoxIter"
     Number of 'box iterations' the algorithm performs to finese the object.
 
+D.  "Distort"
+    Trashing Jos Leys equations to produce altered states.
+
 3. "ShowBalls"
     Toggle whether the distance field spheres are displayed.
 

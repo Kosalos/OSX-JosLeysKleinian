@@ -162,7 +162,7 @@ class WidgetGroup: NSView {
                 let valueY = fClamp2(data[index].getFloatValue(1) + amt, data[index].mRange)
                 data[index].valuePointerY.storeBytes(of:valueY, as:Float.self)
             }
-        case .float3Dual :  // alter all fields of float3
+        case .float3Dual, .float3xy, .float3z :  // alter all fields of float3
             var v:float3 = morphFloat3Value()
             v.x = fClamp2(v.x + amt, data[index].mRange)
             v.y = fClamp2(v.y + amt, data[index].mRange)

@@ -31,28 +31,30 @@ float  JosKleinian(vec3 z,constant Control &control)
     float b = control.KleinI;
     float f = sign(b);
     
-    for (int i = 0; i < control.Box_Iterations ; i++) {
-        z.x=z.x+b/a*z.y;
+    for (int i = 0; i < control.Box_Iterations ; i++)
+    {
+        //if(z.y<0. || z.y>a) break;
+        
+        //z.x=z.x+b/a*z.y;
+        z.x = z.x + b / a * z.y * control.distort.x;
         if (control.fourGen)
             z = wrap(z, vec3(2. * control.box_size_x, a, 2. * control.box_size_z), vec3(- control.box_size_x, 0., - control.box_size_z));
         else
-            z.xz = wrap(z.xz, vec2(2. * control.box_size_x, 2. * control.box_size_z), vec2(- control.box_size_x, - control.box_size_z));
+            z.xz = wrap(z.xz, vec2(control.distort.y * control.box_size_x, control.distort.y * control.box_size_z), vec2(- control.box_size_x, - control.box_size_z));
         z.x=z.x-b/a*z.y;
         
         //If above the separation line, rotate by 180∞ about (-b/2, a/2)
-        if  (z.y >= a * (0.5 +  f * 0.25 * sign(z.x + b * 0.5)* (1. - exp( - 3.2 * abs(z.x + b * 0.5)))))
+        float qq = z.x + b * (0.5 + control.distort.z / 5);
+        if (z.y >= a * (control.distort.z + f * 0.25 * sign(qq) * (1. - exp( - 3.2 * abs(qq)))))
             z = vec3(-b, a, 0.) - z;//
         //z.xy = vec2(-b, a) - z.xy;//
         
         //Apply transformation a
+        //TransA(&z, &DF, a, b);
         float iR = 1. / dot2(z);
         z *= -iR;
         z.x = -b - z.x; z.y = a + z.y;
         DF *= iR;//max(1.,iR);
-        
-        if(control.dfClamp) {
-            DF = max(1.,iR);
-        }
         
         //If the iterated points enters a 2-cycle , bail out.
         if(dot2(z-llz) < 1e-12) {
@@ -166,7 +168,7 @@ float rayMarch // distance, or 0
         if(de < control.epsilon) return distance;
         
         distance += de;
-        if(distance > control.fog/10) return 0;
+        if(distance > 4) return 0;
     }
     
     return 0;

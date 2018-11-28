@@ -68,7 +68,7 @@ class ViewController: NSViewController, NSWindowDelegate, WGDelegate {
     //MARK: -
     
     func resizeIfNecessary() {
-        let minWinSize:CGSize = CGSize(width:700, height:735)
+        let minWinSize:CGSize = CGSize(width:700, height:770)
         var r:CGRect = (view.window?.frame)!
         
         if r.size.width < minWinSize.width || r.size.height < minWinSize.height {
@@ -135,6 +135,7 @@ class ViewController: NSViewController, NSWindowDelegate, WGDelegate {
         wg.addSingleFloat("2",&control.fMaxSteps,10,300,10, "Max Steps")
         wg.addSingleFloat("",&control.fFinal_Iterations, 1,50,1, "FinalIter")
         wg.addSingleFloat("",&control.fBox_Iterations, 5,25,1, "BoxIter")
+        wg.addTriplet("D",&control.distort,0.5,10,0.005,"Distort")
         wg.addLine()
         wg.addColoredCommand("3",.showBalls,"ShowBalls")
         wg.addColoredCommand("",.fourGen,"FourGen")
@@ -300,7 +301,7 @@ class ViewController: NSViewController, NSWindowDelegate, WGDelegate {
         control.fMaxSteps = 70
         control.fFinal_Iterations = 21
         control.fBox_Iterations = 17
-        
+        control.distort = float3(1,2,0.5)
         control.showBalls = true
         control.doInversion = true
         control.fourGen = false
